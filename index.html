@@ -47,5 +47,56 @@
   <footer>
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
+
+<script>
+const canvas = document.getElementById('cometCanvas');
+const ctx = canvas.getContext('2d');
+let width, height;
+const fontSize = 14;
+const glyphs = ['.', '*', '+', 'o', '@'];
+
+function resizeCanvas() {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+let cometX = -50;
+let cometY = height / 2;
+
+function drawGlyph(char, x, y, color = '#e60000') {
+  ctx.fillStyle = color;
+  ctx.font = `${fontSize}px 'Share Tech Mono', monospace`;
+  ctx.fillText(char, x, y);
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+  ctx.fillRect(0, 0, width, height);
+
+  // background dots
+  for (let y = 0; y < height; y += fontSize) {
+    for (let x = 0; x < width; x += fontSize) {
+      drawGlyph('.', x, y, '#111');
+    }
+  }
+
+  // sun symbol
+  drawGlyph('☀', width - 60, height / 2, '#ffff33');
+
+  // comet trail
+  let trail = ['@', 'o', '+', '*', '.'];
+  for (let i = 0; i < trail.length; i++) {
+    drawGlyph(trail[i], cometX - i * 10, cometY, `rgba(255,100,100,${1 - i * 0.2})`);
+  }
+
+  cometX += 2;
+  if (cometX > width + 50) cometX = -50;
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
 </body>
 </html>
