@@ -49,7 +49,7 @@
 
     let width, height;
     let grid = [];
-    const spacing = 8;
+    const spacing = 14;
     let cometX = -50;
     let cometY = 75;
     const cometSpeed = 2;
@@ -89,7 +89,7 @@
         }
 
         const brightness = Math.max(0.2, dot.alpha);
-        ctx.fillStyle = `rgba(255, 220, 220, ${brightness})`;
+        ctx.fillStyle = `rgba(255, 100, 100, ${brightness})`;
         ctx.font = `${spacing - 2}px 'Share Tech Mono', monospace`;
         ctx.fillText('.', dot.x, dot.y + 3);
       }
