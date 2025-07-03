@@ -71,6 +71,10 @@ header p {
   text-align: center;
 }
 
+header {
+  text-align: center;
+}
+
 h2 {
   border-bottom: 1px solid #444;
   padding-bottom: 0.5rem;
