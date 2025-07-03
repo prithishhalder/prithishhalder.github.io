@@ -63,8 +63,8 @@ section {
 p {
   text-align: justify;
 }
-li {
-  text-align: justify;
+li p {
+  margin: 0;
 }
 
 h2 {
