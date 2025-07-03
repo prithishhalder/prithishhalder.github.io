@@ -67,9 +67,6 @@ p {
 li {
   text-align: justify;
 }
-li p {
-  margin: 0;
-}
 
 h2 {
   border-bottom: 1px solid #444;
