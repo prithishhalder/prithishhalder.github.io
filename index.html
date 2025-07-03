@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Prithish Halder | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <canvas id="cometCanvas"></canvas>
+    <canvas id="dotCanvas"></canvas>
     <div class="header-text">
       <h1>Dr. Prithish Halder</h1>
       <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
@@ -43,61 +43,50 @@
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
 
+  <!-- Dot matrix data -->
+  <script src="dot_matrix_data.js"></script>
   <script>
-    const canvas = document.getElementById('cometCanvas');
+    const canvas = document.getElementById('dotCanvas');
     const ctx = canvas.getContext('2d');
 
-    let width, height;
-    let grid = [];
-    const spacing = 14;
-    let cometX = -50;
-    let cometY = 75;
-    const cometSpeed = 2;
-    const illuminationRadius = 60;
-
     function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = canvas.offsetHeight;
-      grid = [];
-
-      for (let y = spacing / 2; y < height; y += spacing) {
-        for (let x = spacing / 2; x < width; x += spacing) {
-          grid.push({ x, y, alpha: 0 });
-        }
-      }
+      canvas.width = window.innerWidth;
+      canvas.height = 150;
     }
 
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      cometY = height / 2;
+    let frame = 0;
 
-      cometX += cometSpeed;
-      if (cometX > width + 50) cometX = -100;
+    function drawDotMatrix() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const rows = dotMatrixData.length;
+      const cols = dotMatrixData[0].length;
 
-      for (let dot of grid) {
-        const dx = dot.x - cometX;
-        const dy = dot.y - cometY;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+      const cellWidth = canvas.width / cols;
+      const cellHeight = canvas.height / rows;
+      const size = Math.min(cellWidth, cellHeight) * 0.6;
 
-        if (distance < illuminationRadius) {
-          dot.alpha = 1;
-        } else {
-          dot.alpha *= 0.95;
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          const pulse = 0.5 + 0.5 * Math.sin((frame + x + y) * 0.1);
+          if (dotMatrixData[y][x]) {
+            ctx.fillStyle = `rgba(255,255,255,${pulse})`;
+            ctx.fillRect(
+              x * cellWidth + cellWidth * 0.2,
+              y * cellHeight + cellHeight * 0.2,
+              size, size
+            );
+          }
         }
-
-        const brightness = Math.max(0.2, dot.alpha);
-        ctx.fillStyle = `rgba(255, 100, 100, ${brightness})`;
-        ctx.font = `${spacing - 2}px 'Share Tech Mono', monospace`;
-        ctx.fillText('.', dot.x, dot.y + 3);
       }
 
-      requestAnimationFrame(animate);
+      frame++;
+      requestAnimationFrame(drawDotMatrix);
     }
 
-    animate();
+    drawDotMatrix();
   </script>
 </body>
 </html>
