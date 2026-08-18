@@ -7,17 +7,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="home-page">
   <header>
-    <canvas id="dotCanvas"></canvas>
-    <div class="header-text">
-      <h1>Dr. Prithish Halder</h1>
-      <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+    <div class="home-header-content">
+      <img src="PXL_20250506_164546007.MP.jpg" alt="Dr. Prithish Halder" class="profile-img">
+      <div class="header-text">
+        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+          <div class="flare-status">
+            <div class="led-indicator" id="flare-led"></div>
+            <span class="flare-text" id="flare-text">Load...</span>
+          </div>
+          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+        </div>
+        <h1>Prithish Halder <span class="credentials">PhD., SoE</span></h1>
+        <p>Postdoctoral Researcher at the University of Liège, Belgium</p>
+      </div>
+    </div>
+    
+    <div class="header-ticker">
+      <div class="ticker-content">
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <!-- Duplicate for seamless infinite scroll -->
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+      </div>
     </div>
   </header>
 
   <nav aria-label="Main navigation">
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="research.html">Research</a>
     <a href="publications.html">Publications</a>
     <a href="presentations.html">Presentations</a>
@@ -25,68 +48,73 @@
     <a href="contact.html">Contact Me</a>
   </nav>
 
-  <section>
-    <h2>Welcome to My Professional Site</h2>
-    <p>I am Dr. Prithish Halder, Adjunct Faculty at University of Nebraska-Lincoln. My work spans cosmic dust, solar physics, light scattering, atmospheric aerosols, and nanoscience.</p>
+  <section class="updates-section">
+    <div class="row">
+      <div class="col-7 card">
+        <h2>About Me</h2>
+        <p>I am <strong>Dr. Prithish Halder</strong>, an astrophysicist with a strong background in cosmic dust modeling, light scattering theory, and solar magnetic topology.</p>
+        <p>My academic journey includes postdoctoral fellowships at the <strong>Indian Institute of Astrophysics (IIA)</strong> and <strong>Physical Research Laboratory (PRL)</strong>. I earned my PhD from Assam University, India, focusing on the optical properties of cosmic dust aggregates.</p>
+        <p>My multidisciplinary research interests span <em>dust in astrophysics</em>, <em>solar flares and energetic particles</em>, <em>aerosols and airborne microplastics</em>, and <em>plasmonics in nanoscience</em>. I was recently awarded the <strong>Seal of Excellence</strong> by the Marie Skłodowska-Curie Actions in 2025.</p>
+      </div>
+      <div class="col-5 card">
+        <h2>Recent Highlights</h2>
+        <ul>
+          <li>Seal of Excellence Award, MSCA (2025)</li>
+          <li>Joined UNL as Adjunct Faculty (2024)</li>
+          <li>Keynote: ML in Astronomy, Sanjivani University (2024)</li>
+        </ul>
+      </div>
+    </div>
 
-    <h2>About Me</h2>
-    <p>I am <strong>Dr. Prithish Halder</strong>, an astrophysicist with a strong background in cosmic dust modeling, light scattering theory, and solar magnetic topology. I am currently an <strong>Adjunct Faculty</strong> at the Department of Physics & Astronomy, University of Nebraska-Lincoln, USA.</p>
+    <h2>Selected Papers</h2>
+    <div class="row">
+      <div class="col-4 card">
+        <h3>Cosmic Dust</h3>
+        <div class="article-item">
+            <h4>A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles</h4>
+            <p>ApJ (2023)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+        <div class="article-item">
+            <h4>REST: A Java Package for Crafting Realistic Cosmic Dust Particles</h4>
+            <p>ApJS (2022)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+      </div>
+      
+      <div class="col-4 card">
+        <h3>Asteroids & Comets</h3>
+        <div class="article-item">
+            <h4>Optical observations and dust modelling of comet 156P/Russell-LINEAR</h4>
+            <p>Icarus (2022)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+        <div class="article-item">
+            <h4>Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry</h4>
+            <p>Ap&SS (2022)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+      </div>
 
-    <p>My academic journey includes postdoctoral fellowships at the <strong>Indian Institute of Astrophysics (IIA)</strong> and <strong>Physical Research Laboratory (PRL)</strong>, where I developed tools like <strong>JaSTA</strong> and <strong>REST</strong> for simulating realistic cosmic dust particles. I earned my PhD from Assam University, India, focusing on the optical properties of cosmic dust aggregates.</p>
-
-    <p>My multidisciplinary research interests span <em>dust in astrophysics</em>, <em>solar flares and energetic particles</em>, <em>aerosols and airborne microplastics</em>, and <em>plasmonics in nanoscience</em>. I have experience with high-performance computing and machine learning, and I have participated in international workshops and observatory-based projects across India and Japan.</p>
-
-    <p>I am an active member of the <a href="https://www.iau.org/administration/membership/individual/19946/" target="_blank">International Astronomical Union</a> and <a href="https://www.astron-soc.in/list-of-life-members" target="_blank">Astronomical Society of India</a>, and was recently awarded the <strong>Seal of Excellence</strong> by the Marie Skłodowska-Curie Actions in 2025.</p>
+      <div class="col-4 card">
+        <h3>Nanoscience</h3>
+        <div class="article-item">
+            <h4>Exploring the Plasmonic Density of States To Direct Singlet or Triplet Excitonic Energy Transfer</h4>
+            <p>The Journal of Physical Chemistry C (2025)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+        <div class="article-item">
+            <h4>Optical Properties of One Dimensional Plasmonic Polymers</h4>
+            <p>ChemPhysChem (2026)</p>
+            <footer><a href="publications.html">Read more</a></footer>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
-
-  <!-- Dot matrix data -->
-  <script src="dot_matrix_data.js"></script>
-  <script>
-    const canvas = document.getElementById('dotCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = 150;
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    let frame = 0;
-
-    function drawDotMatrix() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const rows = dotMatrixData.length;
-      const cols = dotMatrixData[0].length;
-
-      const cellWidth = canvas.width / cols;
-      const cellHeight = canvas.height / rows;
-      const size = Math.min(cellWidth, cellHeight) * 0.6;
-
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-          const pulse = 0.5 + 0.5 * Math.sin((frame + x + y) * 0.1);
-          if (dotMatrixData[y][x]) {
-            ctx.fillStyle = `rgba(255,255,255,${pulse})`;
-            ctx.fillRect(
-              x * cellWidth + cellWidth * 0.2,
-              y * cellHeight + cellHeight * 0.2,
-              size, size
-            );
-          }
-        }
-      }
-
-      frame++;
-      requestAnimationFrame(drawDotMatrix);
-    }
-
-    drawDotMatrix();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

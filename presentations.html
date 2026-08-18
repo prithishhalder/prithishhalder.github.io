@@ -16,30 +16,58 @@
   -->
 </head>
 <body>
-  <header>
-    <h1>Dr. Prithish Halder</h1>
-    <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+  <header class="small-header">
+    <div class="home-header-content">
+      <img src="PXL_20250506_164546007.MP.jpg" alt="Dr. Prithish Halder" class="profile-img">
+      <div class="header-text">
+        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+          <div class="flare-status">
+            <div class="led-indicator" id="flare-led"></div>
+            <span class="flare-text" id="flare-text">Load...</span>
+          </div>
+          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+        </div>
+        <h1>Prithish Halder <span class="credentials">PhD., SoE</span></h1>
+        <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+      </div>
+    </div>
+    <div class="header-ticker">
+      <div class="ticker-content">
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <!-- Duplicate for seamless infinite scroll -->
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+      </div>
+    </div>
   </header>
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
     <a href="publications.html">Publications</a>
-    <a href="presentations.html">Presentations</a>
+    <a href="presentations.html" class="active">Presentations</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact Me</a>
   </nav>
   <section>
     
+    <div class="card">
         <h2>Talks & Conferences</h2>
         <ul>
             <li>2024 – Keynote: ML in Astronomy, Sanjivani University</li>
             <li>2021 – Best Poster, ASI-2021</li>
             <li>2019 – Planet Formation Workshop, Tokyo, Japan</li>
         </ul>
+    </div>
         
   </section>
   <footer>
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

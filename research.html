@@ -16,13 +16,38 @@
   -->
 </head>
 <body>
-  <header>
-    <h1>Dr. Prithish Halder</h1>
-    <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+  <header class="small-header">
+    <div class="home-header-content">
+      <img src="PXL_20250506_164546007.MP.jpg" alt="Dr. Prithish Halder" class="profile-img">
+      <div class="header-text">
+        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+          <div class="flare-status">
+            <div class="led-indicator" id="flare-led"></div>
+            <span class="flare-text" id="flare-text">Load...</span>
+          </div>
+          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+        </div>
+        <h1>Prithish Halder <span class="credentials">PhD., SoE</span></h1>
+        <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+      </div>
+    </div>
+    <div class="header-ticker">
+      <div class="ticker-content">
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <!-- Duplicate for seamless infinite scroll -->
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+      </div>
+    </div>
   </header>
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
+    <a href="research.html" class="active">Research</a>
     <a href="publications.html">Publications</a>
     <a href="presentations.html">Presentations</a>
     <a href="gallery.html">Gallery</a>
@@ -30,18 +55,30 @@
   </nav>
   <section>
     
+    <div class="card">
         <h2>Research Interests</h2>
         <ul>
-            <li>Comet, Asteroid, and Interstellar Dust</li>
-            <li>Light Scattering (Mie, T-matrix, DDA)</li>
-            <li>Solar Magnetic Topology and Flares</li>
-            <li>Aerosols and Microplastics</li>
-            <li>Nanocrystals and Perovskite Systems</li>
+            <li><strong>Dust in Astrophysics:</strong> Comet dust (morphology and composition), Asteroid dust, Interplanetary dust, Proto-planetary dust, Interstellar dust/medium, Circum-galactic dust/medium.</li>
+            <li><strong>Light Scattering Processes:</strong> Polarization, Scattering, Absorption, Extinction.</li>
+            <li><strong>Solar Physics:</strong> Solar energetic particles (SEP), Solar flares (Magnetic topology), Flare Prediction, Stellar flares & CMEs.</li>
+            <li><strong>Atmospheric Science & Nanoscience:</strong> Aerosols, Air borne micro-plastics, Plasmonics, Nano crystals, Perovskite.</li>
         </ul>
-        
+    </div>
+
+    <div class="card">
+        <h2>Skills & Expertise</h2>
+        <ul>
+            <li><strong>Programming:</strong> Julia, Fortran, C/C++, Python, R, Bash, Java, Visual Basic, MatLab, LaTeX</li>
+            <li><strong>Light Scattering Tools:</strong> Mie theory, T-matrix, DDA, RGD</li>
+            <li><strong>Data Reduction & Topology:</strong> IRAF, PyRAF, DS9, DAVE4VM, ARTop, NLFFF, GPU Computing (CUDA.jl)</li>
+            <li><strong>Machine Learning:</strong> XGBoost, CNN, Siamese Neural Network, Random Forest</li>
+            <li><strong>Graphics & Plotting:</strong> Gnuplot, Matplotlib, Origin, VTK, Paraview, Blender 3D</li>
+        </ul>
+    </div>
   </section>
   <footer>
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -16,103 +16,76 @@
   -->
 </head>
 <body>
-  <header>
-    <h1>Dr. Prithish Halder</h1>
-    <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+  <header class="small-header">
+    <div class="home-header-content">
+      <img src="PXL_20250506_164546007.MP.jpg" alt="Dr. Prithish Halder" class="profile-img">
+      <div class="header-text">
+        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+          <div class="flare-status">
+            <div class="led-indicator" id="flare-led"></div>
+            <span class="flare-text" id="flare-text">Load...</span>
+          </div>
+          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+        </div>
+        <h1>Prithish Halder <span class="credentials">PhD., SoE</span></h1>
+        <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
+      </div>
+    </div>
+    <div class="header-ticker">
+      <div class="ticker-content">
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <!-- Duplicate for seamless infinite scroll -->
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+      </div>
+    </div>
   </header>
-  <nav>
+  <nav aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
-    <a href="publications.html">Publications</a>
+    <a href="publications.html" class="active">Publications</a>
     <a href="presentations.html">Presentations</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact Me</a>
   </nav>
   <section>
-    
-<!--        <h2>Publications</h2>
-        <ul>
-            <li><strong>ApJ 2023</strong>: <a href="https://doi.org/10.3847/1538-4357/acbf52">Mimicking Polarization of 2I/Borisov</a></li>
-            <li><strong>ApJS 2022</strong>: <a href="https://doi.org/10.3847/1538-4365/ac9183">REST Java Package</a></li>
-            <li><strong>MNRAS 2020</strong>: <a href="https://doi.org/10.1093/mnras/staa3647">Cometary Dust Modeling</a></li>
-        </ul>
---> 
-
+  <section>
+    <div class="card">
         <h2>Peer-Reviewed Publications</h2>
         <ol style="line-height: 1.8;" reversed>
-<!--              <li>D. Debnath, P. Halder, B. Saha, M. Das, and S. K. Ghosh, “Exploring the plasmonic density of states to direct singlet or triplet excitonic energy transfer from perovskite nanocrystals,” <em>J. Phys. Chem. C</em>, <strong>129</strong>(13), pp. 6535–6550, 2025. <a href="https://doi.org/10.1021/acs.jpcc.5c01599" target="_blank">[DOI]</a></li>
-            
-              <li>S. Narendranath et al., “Solar system research prospects for the decade and beyond,” <em>J. Astrophys. Astron.</em>, 2025. <strong>Accepted</strong></li>
-            
-              <li>R. S. Paul, P. Halder, H. S. Das, A. M. Mazarbhuiya, and B. J. Medhi, “Investigating the extinction and magnetic field geometry in the Bok globule CB26,” <em>MNRAS</em>, <strong>535</strong>, pp. 3353–3362, 2024. <a href="https://doi.org/10.1093/mnras/stae2497" target="_blank">[DOI]</a></li>
-            
-              <li>B. Goswami et al., “Influence of porosity on the Umov effect in silicate and organic refractory aggregates,” <em>J. Quant. Spectrosc. Radiat. Transf.</em>, <strong>323</strong>, 109019, 2024. <a href="https://doi.org/10.1016/j.jqsrt.2024.109019" target="_blank">[DOI]</a></li>
-            
-              <li>D. Debnath et al., “Fermi–Dirac statistics in correlation between electronic entropy and spatial confinement of liquid crystal-perovskite nanohybrids,” <em>J. Mater. Chem. C</em>, 2024. <a href="https://doi.org/10.1039/d4tc00212a" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder and S. Sengupta, “A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles: An Application to Mimic the Unusual Polarization Properties of the Interstellar Comet 2I/Borisov,” <em>Astrophys. J.</em>, <strong>947</strong>, 1, 2023. <a href="https://doi.org/10.3847/1538-4357/acbf52" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder, “REST: A Java Package for Crafting Realistic Cosmic Dust Particles,” <em>Astrophys. J. Suppl. Ser.</em>, <strong>263</strong>, 3, 2022. <a href="https://doi.org/10.3847/1538-4365/ac9183" target="_blank">[DOI]</a></li>
-            
-              <li>K. Aravind et al., “Optical observations and dust modelling of comet 156P/Russell-LINEAR,” <em>Icarus</em>, <strong>383</strong>, 115042, 2022. <a href="https://doi.org/10.1016/j.icarus.2022.115042" target="_blank">[DOI]</a></li>
-            
-              <li>A. M. Mazarbhuiya et al., “Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry,” <em>Ap&SS</em>, <strong>367</strong>, 98, 2022. <a href="https://doi.org/10.1007/s10509-022-04133-7" target="_blank">[DOI]</a></li>
-            
-              <li>A. M. Mazarbhuiya, H. S. Das, and P. Halder, “The Umov effect in cosmic dust analogue fluffy aggregates,” <em>MNRAS</em>, <strong>502</strong>, pp. 2536–2540, 2021. <a href="https://doi.org/10.1093/mnras/stab230" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder, “Jasta-3: Light scattering simulations for heterogeneous aggregate,” <em>Comput. Phys. Commun.</em>, <strong>261</strong>, 107818, 2021. <a href="https://doi.org/10.1016/j.cpc.2020.107818" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder and S. Ganesh, “Modelling heterogeneous dust particles: an application to cometary polarization,” <em>MNRAS</em>, <strong>501</strong>, pp. 1766–1781, 2020. <a href="https://doi.org/10.1093/mnras/staa3647" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder, P. Deb Roy, and H. S. Das, “Dependence of light scattering properties on porosity, size and composition of dust aggregates,” <em>Icarus</em>, <strong>312</strong>, pp. 45–60, 2018. <a href="https://doi.org/10.1016/j.icarus.2018.04.026" target="_blank">[DOI]</a></li>
-            
-              <li>P. Deb Roy, P. Halder, and H. S. Das, “Study of light scattering properties of dust aggregates with a wide variation of porosity,” <em>Ap&SS</em>, <strong>362</strong>, 209, 2017. <a href="https://doi.org/10.1007/s10509-017-3185-x" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder and H. S. Das, “Jasta-2: Second version of the Java Superposition T-matrix Application,” <em>Comput. Phys. Commun.</em>, <strong>221</strong>, pp. 421–422, 2017. <a href="https://doi.org/10.1016/j.cpc.2017.08.020" target="_blank">[DOI]</a></li>
-            
-              <li>P. Deb Roy et al., “Imaging polarimetry of comets C/2013 V1 (Boattini) and 290P/Jager before and after perihelion,” <em>MNRAS</em>, <strong>450</strong>, pp. 1770–1776, 2015. <a href="https://doi.org/10.1093/mnras/stv707" target="_blank">[DOI]</a></li>
-            
-              <li>P. Halder et al., “Java application for the superposition T-matrix code to study the optical properties of cosmic dust aggregates,” <em>Comput. Phys. Commun.</em>, <strong>185</strong>(9), pp. 2369–2379, 2014. <a href="https://doi.org/10.1016/j.cpc.2014.04.019" target="_blank">[DOI]</a></li>
-            </ol>-->
-              <li>Debnath, D., <strong><u>Halder, P.</u></strong>, Saha, B., Das, M., Ghosh, S. K., “Exploring the plasmonic density of states to direct singlet or triplet excitonic energy transfer from perovskite nanocrystals,” <em>J. Phys. Chem. C</em>, <strong>129</strong>(13), pp. 6535–6550, 2025. <a href="https://doi.org/10.1021/acs.jpcc.5c01599" target="_blank">[DOI]</a></li>
-              
-              <li>Narendranath, S. et al., “Solar system research prospects for the decade and beyond,” <em>J. Astrophys. Astron.</em>, 2025.</li>
-        
-              <li>Paul, R. S., <strong><u>Halder, P.</u></strong>, Das, H. S., Mazarbhuiya, A. M., Medhi, B. J., “Investigating the extinction and magnetic field geometry in the Bok globule CB26,” <em>MNRAS</em>, <strong>535</strong>, pp. 3353–3362, 2024. <a href="https://doi.org/10.1093/mnras/stae2497" target="_blank">[DOI]</a></li>
-              
-              <li>Goswami, B., Das, H., Devi, N., <strong><u>Halder, P.</u></strong>, “Influence of porosity on the Umov effect in silicate and organic refractory aggregates,” <em>J. Quant. Spectrosc. Radiat. Transf.</em>, <strong>323</strong>, pp. 109019, 2024. <a href="https://doi.org/10.1016/j.jqsrt.2024.109019" target="_blank">[DOI]</a></li>
-              
-              <li>Debnath, D., <strong><u>Halder, P.</u></strong>, Saha, B., Acharya, H., Ghosh, S. K., “Fermi–Dirac statistics in correlation between electronic entropy and spatial confinement of liquid crystal-perovskite nanohybrids,” <em>J. Mater. Chem. C</em>, 2024. <a href="https://doi.org/10.1039/d4tc00212a" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, Sengupta, S., “A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles,” <em>ApJ</em>, <strong>947</strong>, pp. 1, 2023. <a href="https://doi.org/10.3847/1538-4357/acbf52" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, “REST: A Java Package for Crafting Realistic Cosmic Dust Particles,” <em>ApJS</em>, <strong>263</strong>, pp. 3, 2022. <a href="https://doi.org/10.3847/1538-4365/ac9183" target="_blank">[DOI]</a></li>
-              
-              <li>Aravind, K., <strong><u>Halder, P.</u></strong>, Ganesh, S., Sahu, D., Serra-Ricart, M., Chambó, J. J., Angchuk, D., Sivarani, T., “Optical observations and dust modelling of comet 156P/Russell-LINEAR,” <em>Icarus</em>, <strong>383</strong>, pp. 115042, 2022. <a href="https://doi.org/10.1016/j.icarus.2022.115042" target="_blank">[DOI]</a></li>
-              
-              <li>Mazarbhuiya, A. M., Das, H. S., Medhi, B. J., <strong><u>Halder, P.</u></strong>, Deb Roy, P., “Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry,” <em>Ap&SS</em>, <strong>367</strong>(9), pp. 98, 2022. <a href="https://doi.org/10.1007/s10509-022-04133-7" target="_blank">[DOI]</a></li>
-              
-              <li>Mazarbhuiya, A. M., Das, H. S., <strong><u>Halder, P.</u></strong>, “The Umov effect in cosmic dust analogue fluffy aggregates,” <em>MNRAS</em>, <strong>502</strong>(2), pp. 2536–2540, 2021. <a href="https://doi.org/10.1093/mnras/stab230" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, “Jasta-3: Light scattering simulations for heterogeneous aggregate,” <em>Comput. Phys. Commun.</em>, <strong>261</strong>, pp. 107818, 2021. <a href="https://doi.org/10.1016/j.cpc.2020.107818" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, Ganesh, S., “Modelling heterogeneous dust particles: an application to cometary polarization,” <em>MNRAS</em>, <strong>501</strong>(2), pp. 1766–1781, 2020. <a href="https://doi.org/10.1093/mnras/staa3647" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, Deb Roy, P., Das, H. S., “Dependence of light scattering properties on porosity, size and composition of dust aggregates,” <em>Icarus</em>, <strong>312</strong>, pp. 45–60, 2018. <a href="https://doi.org/10.1016/j.icarus.2018.04.026" target="_blank">[DOI]</a></li>
-              
-              <li>Deb Roy, P., <strong><u>Halder, P.</u></strong>, Das, H. S., “Study of light scattering properties of dust aggregates with a wide variation of porosity,” <em>Ap&SS</em>, <strong>362</strong>(209), pp. 1–13, 2017. <a href="https://doi.org/10.1007/s10509-017-3185-x" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, Das, H. S., “JaSTA-2: Second version of the Java Superposition T-matrix Application,” <em>Comput. Phys. Commun.</em>, <strong>221</strong>, pp. 421–422, 2017. <a href="https://doi.org/10.1016/j.cpc.2017.08.020" target="_blank">[DOI]</a></li>
-              
-              <li>Deb Roy, P., <strong><u>Halder, P.</u></strong>, Das, H. S., Medhi, B. J., “Imaging polarimetry of comets C/2013 V1 (Boattini) and 290P/Jager before and after perihelion,” <em>MNRAS</em>, <strong>450</strong>(2), pp. 1770–1776, 2015. <a href="https://doi.org/10.1093/mnras/stv707" target="_blank">[DOI]</a></li>
-              
-              <li><strong><u>Halder, P.</u></strong>, Chakraborty, A., Deb Roy, P., Das, H. S., “Java application for the superposition T-matrix code to study the optical properties of cosmic dust aggregates,” <em>Comput. Phys. Commun.</em>, <strong>185</strong>(9), pp. 2369–2379, 2014. <a href="https://doi.org/10.1016/j.cpc.2014.04.019" target="_blank">[DOI]</a></li>
-            </ol>            
-            
-             
+              <li>G. Ahuja, S. Ganesh, K. Aravind, E. Jehin, B. Ailawadhi, V. K. Agnihotri, B. Arvind, P. Saraf, A. Singh, D. R. Sarkar, S. Chandra, <strong><u>P. Halder</u></strong>, D. Sahu, T. Sivarani, and A. Bhardwaj. “Post-perihelion observations of the interstellar comet 3I/ATLAS”. <em>Monthly Notices of the Royal Astronomical Society</em> (2026). “(Accepted)”.</li>
+              <li>M. Arnaut, C. Wöhler, <strong><u>P. Halder</u></strong>, G. Ahuja, S. Ganesh, and M. Bhatt. “Wide-field polarization imaging and numerical modeling of the coma and tail of comet C/2023 A3 (Tsuchinshan-ATLAS)”. <em>A&A</em> 707, A150 (Mar. 2026), A150.</li>
+              <li>S. K. Pal, D. Sen, D. Bardhan, <strong><u>P. Halder</u></strong>, and S. K. Ghosh. “Optical Properties of One Dimensional Plasmonic Polymers”. <em>ChemPhysChem</em> 27 (2 Jan. 2026), e202500862.</li>
+              <li>D. Debnath, <strong><u>P. Halder</u></strong>, B. Saha, M. Das, and S. K. Ghosh. “Exploring the Plasmonic Density of States To Direct Singlet or Triplet Excitonic Energy Transfer from Perovskite Nanocrystals”. <em>The Journal of Physical Chemistry C</em> 129 (13 Apr. 2025), pp. 6535–6550.</li>
+              <li>D. Debnath, <strong><u>P. Halder</u></strong>, B. Saha, H. Acharya, and S. K. Ghosh. “Fermi–Dirac statistics in correlation between electronic entropy and spatial confinement of liquid crystal perovskite nanohybrids”. <em>Journal of Materials Chemistry C</em> 12.10 (Mar. 2024), pp. 3535–3548.</li>
+              <li>B. Goswami, H. S. Das, N. N. Devi, and <strong><u>P. Halder</u></strong>. “Influence of porosity on the Umov effect in silicate and organic refractory aggregates”. <em>JQSRT</em> 323, 109019 (Sept. 2024), p. 109019.</li>
+              <li>R. S. Paul, <strong><u>P. Halder</u></strong>, H. S. Das, A. M. Mazarbhuiya, and B. J. Medhi. “Investigating the extinction and magnetic field geometry in the Bok globule CB26”. <em>MNRAS</em> 535.4 (Dec. 2024), pp. 3353–3362.</li>
+              <li><strong><u>P. Halder</u></strong> and S. Sengupta. “A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles: An Application to Mimic the Unusual Polarization Properties of the Interstellar Comet 2I/Borisov”. <em>ApJ</em> 947.1, 1 (Apr. 2023), p. 1.</li>
+              <li>K. Aravind, <strong><u>P. Halder</u></strong>, S. Ganesh, D. Sahu, M. Serra-Ricart, J. J. Chambó, D. Angchuk, and T. Sivarani. “Optical observations and dust modelling of comet 156P/Russell LINEAR”. <em>Icarus</em> 383, 115042 (Sept. 2022), p. 115042.</li>
+              <li><strong><u>P. Halder</u></strong>. “REST: A Java Package for Crafting Realistic Cosmic Dust Particles”. <em>ApJS</em> 263.1, 3 (Nov. 2022), p. 3.</li>
+              <li>A. M. Mazarbhuiya, H. S. Das, B. J. Medhi, <strong><u>P. Halder</u></strong>, and P. Deb Roy. “Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry”. <em>Ap&SS</em> 367.9, 98 (Sept. 2022), p. 98.</li>
+              <li><strong><u>P. Halder</u></strong>. “JaSTA-3: Light scattering simulations for heterogeneous aggregate”. <em>Computer Physics Communications</em> 261, 107818 (Apr. 2021), p. 107818.</li>
+              <li><strong><u>P. Halder</u></strong> and S. Ganesh. “Modelling heterogeneous dust particles: an application to cometary polarization”. <em>MNRAS</em> 501.2 (Feb. 2021), pp. 1766–1781.</li>
+              <li>A. M. Mazarbhuiya, H. S. Das, and <strong><u>P. Halder</u></strong>. “The Umov effect in cosmic dust analogue fluffy aggregates”. <em>MNRAS</em> 502.2 (Apr. 2021), pp. 2536–2540.</li>
+              <li><strong><u>P. Halder</u></strong>, P. Deb Roy, and H. S. Das. “Dependence of light scattering properties on porosity, size and composition of dust aggregates”. <em>Icarus</em> 312 (Sept. 2018), pp. 45–60.</li>
+              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, and H. S. Das. “Study of light scattering properties of dust aggregates with a wide variation of porosity”. <em>Ap&SS</em> 362.11, 209 (Nov. 2017), p. 209.</li>
+              <li><strong><u>P. Halder</u></strong> and H. S. Das. “JaSTA-2: Second version of the Java Superposition T matrix Application”. <em>Computer Physics Communications</em> 221 (Dec. 2017), pp. 421–422.</li>
+              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, H. S. Das, and B. J. Medhi. “Imaging polarimetry of comets C/2013 V1 (Boattini) and 290P/Jager before and after perihelion”. <em>MNRAS</em> 450.2 (June 2015), pp. 1770–1776.</li>
+              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, H. S. Das, and B. J. Medhi. “Polarimetric Studies of comets C/2013 V1 (Boattini) and 290P/Jager”. <em>IAU General Assembly</em>. Vol. 29. Aug. 2015, 2256508, p. 2256508.</li>
+              <li><strong><u>P. Halder</u></strong>, A. Chakraborty, P. Deb Roy, and H. S. Das. “Java application for the superposition T-matrix code to study the optical properties of cosmic dust aggregates”. <em>Computer Physics Communications</em> 185.9 (Sept. 2014), pp. 2369–2379.</li>
+        </ol>
+    </div>
+    
+
   </section>
   <footer>
     <p>&copy; 2025 Dr. Prithish Halder</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
