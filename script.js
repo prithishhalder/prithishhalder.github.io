@@ -119,9 +119,37 @@ async function drawGoesXray() {
     const data = await response.json();
     
     // Filter for the primary satellite (e.g. 18) and the correct energy band
-    // The data array might contain both satellite 16 and 18 if they are both reporting
-    const series = data.filter(d => d.energy === '0.1-0.8nm' && d.satellite === 18).map(d => d.flux);
+    const goesData = data.filter(d => d.energy === '0.1-0.8nm' && d.satellite === 18);
+    const series = goesData.map(d => d.flux);
     
+    // Create tooltip element if it doesn't exist
+    let tooltip = document.getElementById('flare-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.id = 'flare-tooltip';
+      tooltip.style.position = 'absolute';
+      tooltip.style.background = 'rgba(0, 0, 0, 0.85)';
+      tooltip.style.color = '#fff';
+      tooltip.style.padding = '6px 12px';
+      tooltip.style.borderRadius = '8px';
+      tooltip.style.fontSize = '12px';
+      tooltip.style.pointerEvents = 'none';
+      tooltip.style.display = 'none';
+      tooltip.style.zIndex = '1000';
+      tooltip.style.whiteSpace = 'nowrap';
+      tooltip.style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)';
+      tooltip.style.border = '1px solid rgba(255,255,255,0.2)';
+      document.body.appendChild(tooltip);
+    }
+    
+    function getFlareClass(flux) {
+      if (flux >= 1e-4) return 'X' + (flux / 1e-4).toFixed(1);
+      if (flux >= 1e-5) return 'M' + (flux / 1e-5).toFixed(1);
+      if (flux >= 1e-6) return 'C' + (flux / 1e-6).toFixed(1);
+      if (flux >= 1e-7) return 'B' + (flux / 1e-7).toFixed(1);
+      return 'A' + (flux / 1e-8).toFixed(1);
+    }
+
     canvases.forEach(canvas => {
       const ctx = canvas.getContext('2d');
       const width = canvas.width;
@@ -166,27 +194,55 @@ async function drawGoesXray() {
       });
       ctx.stroke();
 
+      // Add subtle NOAA attribution watermark
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      ctx.font = '9px Arial';
+      ctx.textAlign = 'left';
+      ctx.fillText('NOAA/GOES', 4, 10);
+
+      // Setup Tooltip Interaction
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const scaleX = width / rect.width;
+        const actualX = offsetX * scaleX;
+        
+        let index = Math.round(actualX / step);
+        if (index < 0) index = 0;
+        if (index >= goesData.length) index = goesData.length - 1;
+        
+        const point = goesData[index];
+        if (point) {
+          const fClass = getFlareClass(point.flux);
+          const dateStr = new Date(point.time_tag).toLocaleString([], {
+            month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit'
+          });
+          
+          tooltip.innerHTML = `<strong style="color:var(--accent-color); font-size:14px;">${fClass}</strong><br><span style="opacity:0.8">${dateStr}</span>`;
+          tooltip.style.display = 'block';
+          tooltip.style.left = (e.pageX + 15) + 'px';
+          tooltip.style.top = (e.pageY + 15) + 'px';
+        }
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+
       // --- Update Flare Class Indicator ---
       const currentFlux = series[series.length - 1];
-      let flareClass = "A";
+      let flareClass = getFlareClass(currentFlux);
       let indicatorColor = "#4CAF50"; // Green by default
       let glowColor = "rgba(76, 175, 80, 0.6)";
 
       if (currentFlux >= 1e-4) {
-        flareClass = 'X' + (currentFlux / 1e-4).toFixed(1);
         indicatorColor = '#ff3333'; // Bright Red
         glowColor = 'rgba(255, 51, 51, 0.8)';
       } else if (currentFlux >= 1e-5) {
-        flareClass = 'M' + (currentFlux / 1e-5).toFixed(1);
         indicatorColor = '#ffaa00'; // Amber/Yellow
         glowColor = 'rgba(255, 170, 0, 0.8)';
       } else if (currentFlux >= 1e-6) {
-        flareClass = 'C' + (currentFlux / 1e-6).toFixed(1);
         indicatorColor = '#4CAF50'; // Green
-      } else if (currentFlux >= 1e-7) {
-        flareClass = 'B' + (currentFlux / 1e-7).toFixed(1);
-      } else {
-        flareClass = 'A' + (currentFlux / 1e-8).toFixed(1);
       }
 
       const leds = document.querySelectorAll('.led-indicator');
