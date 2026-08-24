@@ -47,7 +47,7 @@ header {
   overflow: hidden;
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  background-image: url('PXL_20250507_181504720.jpg');
+  background-image: url('banner.jpg');
   background-size: cover;
   background-position: center 20%;
   background-repeat: no-repeat;
@@ -80,6 +80,18 @@ header.small-header, body.navigating header {
   height: 100%;
   z-index: 0;
   opacity: 0.8;
+}
+
+#science-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background: radial-gradient(circle at center, #1e1e38, #0a0a0f);
 }
 
 /* --- News Ticker --- */
@@ -342,7 +354,7 @@ nav a:hover::after, nav a.active::after {
 
 section {
   padding: 4rem 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   flex: 1;
   animation: fadeIn 1s ease-out;
@@ -456,7 +468,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   width: 100%;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

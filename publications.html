@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,10 +11,10 @@
   <meta property="og:description" content="Astrophysicist and Adjunct Faculty at University of Nebraska-Lincoln.">
   <meta property="og:url" content="https://prithishhalder.github.io/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://prithishhalder.github.io/PXL_20250506_164546007.MP.jpg">
+  <meta property="og:image" content="https://prithishhalder.github.io/profile.jpg">
 
   <link rel="stylesheet" href="style.css?v=1787124764067">
-<!--
+  <!--
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header, footer { background-color: #0b3d91; color: white; text-align: center; padding: 1rem; }
     nav { background-color: #f2f2f2; text-align: center; padding: 0.75rem; }
@@ -23,17 +24,21 @@
     img { margin: 10px; border-radius: 6px; }
   -->
 </head>
+
 <body>
+  <canvas id="science-bg"></canvas>
   <header class="small-header">
     <div class="home-header-content">
-      <img src="PXL_20250506_164546007.MP.jpg" alt="Dr. Prithish Halder" class="profile-img">
+      <img src="profile.jpg" alt="Dr. Prithish Halder" class="profile-img">
       <div class="header-text">
-        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+        <div class="chart-container"
+          style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
           <div class="flare-status">
             <div class="led-indicator" id="flare-led"></div>
             <span class="flare-text" id="flare-text">Load...</span>
           </div>
-          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+          <canvas class="goes-xray-chart" width="400" height="60"
+            style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
         </div>
         <h1>Prithish Halder <span class="credentials">PhD.</span></h1>
         <p>Adjunct Faculty, University of Nebraska-Lincoln</p>
@@ -41,15 +46,23 @@
     </div>
     <div class="header-ticker">
       <div class="ticker-content">
-        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James
+          Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive
+          quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a
+          potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution
+          spectroscopic analysis of pristine cometary structures</span>
         <!-- Duplicate for seamless infinite scroll -->
-        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive quiescent galaxy at redshift 4.65 observed by JWST</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a potentially habitable super-Earth around a nearby M-dwarf star</span>
-        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution spectroscopic analysis of pristine cometary structures</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e63946">Nature Astronomy</span> James
+          Webb Space Telescope reveals new atmospheric features on Exoplanet K2-18 b</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#2a9d8f">Science</span> A massive
+          quiescent galaxy at redshift 4.65 observed by JWST</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#e76f51">ApJ</span> Discovery of a
+          potentially habitable super-Earth around a nearby M-dwarf star</span>
+        <span class="ticker-item"><span class="journal-badge" style="background:#1d3557">MNRAS</span> High-resolution
+          spectroscopic analysis of pristine cometary structures</span>
       </div>
     </div>
   </header>
@@ -62,37 +75,33 @@
     <a href="contact.html">Contact Me</a>
   </nav>
   <section>
-  <section>
-    <div class="card">
-        <h2>Peer-Reviewed Publications</h2>
-        <ol style="line-height: 1.8;" reversed>
-              <li>M. Arnaut, C. Wöhler, <strong><u>P. Halder</u></strong>, G. Ahuja, S. Ganesh, and M. Bhatt. “Wide-field polarization imaging and numerical modeling of the coma and tail of comet C/2023 A3 (Tsuchinshan-ATLAS)”. <em>A&A</em> 707, A150 (Mar. 2026), A150.</li>
-              <li>S. K. Pal, D. Sen, D. Bardhan, <strong><u>P. Halder</u></strong>, and S. K. Ghosh. “Optical Properties of One Dimensional Plasmonic Polymers”. <em>ChemPhysChem</em> 27 (2 Jan. 2026), e202500862.</li>
-              <li>D. Debnath, <strong><u>P. Halder</u></strong>, B. Saha, M. Das, and S. K. Ghosh. “Exploring the Plasmonic Density of States To Direct Singlet or Triplet Excitonic Energy Transfer from Perovskite Nanocrystals”. <em>The Journal of Physical Chemistry C</em> 129 (13 Apr. 2025), pp. 6535–6550.</li>
-              <li>D. Debnath, <strong><u>P. Halder</u></strong>, B. Saha, H. Acharya, and S. K. Ghosh. “Fermi–Dirac statistics in correlation between electronic entropy and spatial confinement of liquid crystal perovskite nanohybrids”. <em>Journal of Materials Chemistry C</em> 12.10 (Mar. 2024), pp. 3535–3548.</li>
-              <li>B. Goswami, H. S. Das, N. N. Devi, and <strong><u>P. Halder</u></strong>. “Influence of porosity on the Umov effect in silicate and organic refractory aggregates”. <em>JQSRT</em> 323, 109019 (Sept. 2024), p. 109019.</li>
-              <li>R. S. Paul, <strong><u>P. Halder</u></strong>, H. S. Das, A. M. Mazarbhuiya, and B. J. Medhi. “Investigating the extinction and magnetic field geometry in the Bok globule CB26”. <em>MNRAS</em> 535.4 (Dec. 2024), pp. 3353–3362.</li>
-              <li><strong><u>P. Halder</u></strong> and S. Sengupta. “A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles: An Application to Mimic the Unusual Polarization Properties of the Interstellar Comet 2I/Borisov”. <em>ApJ</em> 947.1, 1 (Apr. 2023), p. 1.</li>
-              <li>K. Aravind, <strong><u>P. Halder</u></strong>, S. Ganesh, D. Sahu, M. Serra-Ricart, J. J. Chambó, D. Angchuk, and T. Sivarani. “Optical observations and dust modelling of comet 156P/Russell LINEAR”. <em>Icarus</em> 383, 115042 (Sept. 2022), p. 115042.</li>
-              <li><strong><u>P. Halder</u></strong>. “REST: A Java Package for Crafting Realistic Cosmic Dust Particles”. <em>ApJS</em> 263.1, 3 (Nov. 2022), p. 3.</li>
-              <li>A. M. Mazarbhuiya, H. S. Das, B. J. Medhi, <strong><u>P. Halder</u></strong>, and P. Deb Roy. “Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry”. <em>Ap&SS</em> 367.9, 98 (Sept. 2022), p. 98.</li>
-              <li><strong><u>P. Halder</u></strong>. “JaSTA-3: Light scattering simulations for heterogeneous aggregate”. <em>Computer Physics Communications</em> 261, 107818 (Apr. 2021), p. 107818.</li>
-              <li><strong><u>P. Halder</u></strong> and S. Ganesh. “Modelling heterogeneous dust particles: an application to cometary polarization”. <em>MNRAS</em> 501.2 (Feb. 2021), pp. 1766–1781.</li>
-              <li>A. M. Mazarbhuiya, H. S. Das, and <strong><u>P. Halder</u></strong>. “The Umov effect in cosmic dust analogue fluffy aggregates”. <em>MNRAS</em> 502.2 (Apr. 2021), pp. 2536–2540.</li>
-              <li><strong><u>P. Halder</u></strong>, P. Deb Roy, and H. S. Das. “Dependence of light scattering properties on porosity, size and composition of dust aggregates”. <em>Icarus</em> 312 (Sept. 2018), pp. 45–60.</li>
-              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, and H. S. Das. “Study of light scattering properties of dust aggregates with a wide variation of porosity”. <em>Ap&SS</em> 362.11, 209 (Nov. 2017), p. 209.</li>
-              <li><strong><u>P. Halder</u></strong> and H. S. Das. “JaSTA-2: Second version of the Java Superposition T matrix Application”. <em>Computer Physics Communications</em> 221 (Dec. 2017), pp. 421–422.</li>
-              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, H. S. Das, and B. J. Medhi. “Imaging polarimetry of comets C/2013 V1 (Boattini) and 290P/Jager before and after perihelion”. <em>MNRAS</em> 450.2 (June 2015), pp. 1770–1776.</li>
-              <li>P. Deb Roy, <strong><u>P. Halder</u></strong>, H. S. Das, and B. J. Medhi. “Polarimetric Studies of comets C/2013 V1 (Boattini) and 290P/Jager”. <em>IAU General Assembly</em>. Vol. 29. Aug. 2015, 2256508, p. 2256508.</li>
-              <li><strong><u>P. Halder</u></strong>, A. Chakraborty, P. Deb Roy, and H. S. Das. “Java application for the superposition T-matrix code to study the optical properties of cosmic dust aggregates”. <em>Computer Physics Communications</em> 185.9 (Sept. 2014), pp. 2369–2379.</li>
-        </ol>
-    </div>
-    
+    <section>
+      <div class="card">
+        <h2>List of Publications</h2>
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 20px;">
+          <label for="pub-sort" style="font-weight: 600; margin-right: 12px; font-size: 15px;">Sort By:</label>
+          <select id="pub-sort"
+            style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ddd; background-color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+            <option value="default">Default Order</option>
+            <option value="year-desc">Year (Newest First)</option>
+            <option value="author-pos">Author Position (1st Author Top)</option>
+            <option value="if-desc">Impact Factor (Highest First)</option>
+            <option value="sjr-desc">SJR Index (Highest First)</option>
+            <option value="q-asc">Quartile (Q1 First)</option>
+            <option value="citations-desc">Citations (Highest First)</option>
+          </select>
+        </div>
+        <ol id="publications-list" style="line-height: 1.8;">
 
-  </section>
-  <footer>
-    <p>&copy; 2025 Dr. Prithish Halder</p>
-  </footer>
-  <script src="script.js?v=1787124764067"></script>
+        </ol>
+      </div>
+
+
+    </section>
+    <footer>
+      <p>&copy; 2025 Dr. Prithish Halder</p>
+    </footer>
+    <script src="script.js?v=1787124764067"></script>
 </body>
+
 </html>
