@@ -1,5 +1,6 @@
 # Predicting Extreme Solar Flares: A New Magnetic Topology Framework
 *August 25, 2026 • 3 min read*
+*Authors: Prithish Halder, Sudheer K. Mishra, Abhishek K. Srivastava, Ayumi Asai, Manik Sharma, Peter A. Dowben*
 **[FEATURED]**
 
 ![Solar Flare Prediction](images/post2_im1.jpg)
