@@ -72,10 +72,10 @@
   <nav aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
-    <a href="publications.html" class="active">Publications</a>
+    <a href="publications.html">Publications</a>
     <a href="presentations.html">Presentations</a>
     <a href="gallery.html">Gallery</a>
-    <a href="blog.html">Blog</a>
+    <a href="blog.html" class="active">Blog</a>
     <a href="contact.html">Contact Me</a>
   </nav>
   <section>
@@ -118,26 +118,29 @@
           <rect width="40" height="100%" fill="url(#rangoli-pattern)"/>
         </svg>
 
-        <h2>List of Publications</h2>
-        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 20px;">
-          <label for="pub-sort" style="font-weight: 600; margin-right: 12px; font-size: 15px;">Sort By:</label>
-          <select id="pub-sort"
-            style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ddd; background-color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: all 0.3s ease;">
-            <option value="default">Default Order</option>
-            <option value="year-desc">Year (Newest First)</option>
-            <option value="author-pos">Author Position (1st Author Top)</option>
-            <option value="if-desc">Impact Factor (Highest First)</option>
-            <option value="sjr-desc">SJR Index (Highest First)</option>
-            <option value="q-asc">Quartile (Q1 First)</option>
-            <option value="citations-desc">Citations (Highest First)</option>
-          </select>
+        <h2>Recent Blog Posts</h2>
+        <div id="blog-container" class="blog-container" style="margin-top: 2rem; min-height: 200px;">
+            <p style="color: #aaa; text-align: center;">Loading posts...</p>
         </div>
-        <ol id="publications-list" style="line-height: 1.8;">
 
-        </ol>
+        <!-- Comment Section -->
+        <div id="comment-section" style="display: none; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <h3 style="color: #fff; margin-bottom: 1.5rem;">Join the Discussion</h3>
+            <!-- begin wwww.htmlcommentbox.com -->
+            <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Widget</a> is loading comments...</div>
+            <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+            <style>
+                /* Override HCB styles for dark theme */
+                #HCB_comment_box { color: #ccc; font-family: 'Inter', sans-serif; }
+                #HCB_comment_box .hcb-wrapper { border: none; background: transparent; }
+                #HCB_comment_box textarea, #HCB_comment_box input[type="text"] { background: rgba(255,255,255,0.05) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.2) !important; border-radius: 4px; }
+                #HCB_comment_box .btn { background: #e63946 !important; color: #fff !important; border: none !important; border-radius: 4px !important; text-shadow: none !important; box-shadow: none !important; }
+                #HCB_comment_box .btn:hover { background: #d62828 !important; }
+                #HCB_comment_box .hcb-comment-tb a { color: #009688; }
+                .hcb-comment-body { color: #eee; }
+            </style>
+        </div>
       </div>
-
-
     </section>
     <footer>
       <p>&copy; 2026 <a href="https://orcid.org/0000-0002-1073-1419" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #ccc; transition: color 0.3s;" onmouseover="this.style.color='#a6ce39'" onmouseout="this.style.color='inherit'">Prithish Halder</a></p>
@@ -154,8 +157,94 @@
 
     
   </footer>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="script.js?v=1787124764067"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+      // Markdown Blog Loader
+      fetch('blog.md')
+        .then(response => response.text())
+        .then(text => {
+            const posts = text.split('---').filter(p => p.trim() !== '');
+            const container = document.getElementById('blog-container');
+            container.innerHTML = ''; 
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const postIndex = urlParams.get('post');
+            
+            if (postIndex !== null && posts[postIndex]) {
+                // Show single post
+                const article = document.createElement('article');
+                article.className = 'blog-post';
+                article.innerHTML = `<div class="blog-content">${marked.parse(posts[postIndex])}</div>`;
+                
+                // Add Like button wrapper
+                const likeWrapper = document.createElement('div');
+                likeWrapper.style.marginTop = '1rem';
+                likeWrapper.innerHTML = `<span class="likebtn-wrapper" data-theme="drop" data-show_dislike_label="false" data-dislike_enabled="false" data-identifier="blog_post_${postIndex}"></span>`;
+                article.appendChild(likeWrapper);
+                
+                const backBtn = document.createElement('a');
+                backBtn.href = 'blog.html';
+                backBtn.innerHTML = '← Back to all posts';
+                backBtn.style.display = 'inline-block';
+                backBtn.style.marginBottom = '2rem';
+                backBtn.style.color = '#e63946';
+                backBtn.style.textDecoration = 'none';
+                backBtn.style.fontWeight = 'bold';
+                
+                container.appendChild(backBtn);
+                container.appendChild(article);
+                
+                // Show comment box for this specific post
+                document.getElementById('comment-section').style.display = 'block';
+                window.hcb_user = { PAGE: window.location.href };
+                
+                var s=document.createElement("script"), l=window.hcb_user.PAGE, h="https://www.htmlcommentbox.com";
+                s.setAttribute("type","text/javascript");
+                s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&opts=16862&num=10&ts=1");
+                document.getElementsByTagName("head")[0].appendChild(s);
+            } else {
+                // Show all posts summary
+                posts.forEach((post, index) => {
+                    const article = document.createElement('article');
+                    article.className = 'blog-post';
+                    article.innerHTML = `<div class="blog-content">${marked.parse(post)}</div>`;
+                    
+                    const readMore = document.createElement('a');
+                    readMore.href = `blog.html?post=${index}`;
+                    readMore.innerHTML = '💬 Read & Comment';
+                    readMore.style.display = 'inline-block';
+                    readMore.style.marginTop = '1rem';
+                    readMore.style.padding = '6px 12px';
+                    readMore.style.backgroundColor = 'rgba(255,255,255,0.05)';
+                    readMore.style.border = '1px solid rgba(255,255,255,0.1)';
+                    readMore.style.borderRadius = '4px';
+                    readMore.style.color = '#fff';
+                    readMore.style.textDecoration = 'none';
+                    
+                    article.appendChild(readMore);
+                    container.appendChild(article);
+                });
+            }
+        })
+        .then(() => {
+            // Initialize LikeBtn widget dynamically after elements are created
+            if (typeof LikeBtn == "undefined") {
+                var d = document, e = 'script', s = '//w.likebtn.com/js/w/widget.js';
+                if (!d.getElementById('likebtn_wjs')) {
+                    var a = d.createElement(e), m = d.getElementsByTagName(e)[0];
+                    a.async = 1;
+                    a.id = 'likebtn_wjs';
+                    a.src = s;
+                    m.parentNode.insertBefore(a, m);
+                }
+            } else {
+                LikeBtn.init();
+            }
+        })
+        .catch(error => {
+            document.getElementById('blog-container').innerHTML = '<p style="color:red; text-align:center;">Failed to load blog posts.</p>';
+        });
+    </script>
 </body>
-
 </html>

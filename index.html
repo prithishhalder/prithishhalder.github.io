@@ -37,15 +37,18 @@
     <div class="home-header-content">
       <img src="profile.jpg" alt="Dr. Prithish Halder" class="profile-img">
       <div class="header-text">
-        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center;  gap: 1.5rem; margin-bottom: 0.5rem;">
+        <div class="chart-container" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1.5rem; margin-bottom: 0.5rem;">
           <div class="flare-status">
             <div class="led-indicator" id="flare-led"></div>
             <span class="flare-text" id="flare-text">Load...</span>
           </div>
-          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block; margin-left: auto; margin-right: auto;"></canvas>
+          <canvas class="goes-xray-chart" width="400" height="60" style="width: 100%; max-width: 400px; height: 60px; display: block;"></canvas>
         </div>
-        <h1>Prithish Halder <span class="credentials">PhD.</span></h1>
-        <p>Adjunct Faculty, Physics and Astronomy, University of Nebraska-Lincoln</p>
+        <div class="title-address">
+          <h1>Prithish Halder <span class="credentials">PhD.</span></h1>
+          <p>Adjunct Faculty, Physics and Astronomy, University of Nebraska&#8209;Lincoln</p>
+        </div>
+        <div id="featured-story-banner" class="featured-banner"></div>
       </div>
     </div>
     
@@ -70,6 +73,7 @@
     <a href="publications.html">Publications</a>
     <a href="presentations.html">Presentations</a>
     <a href="gallery.html">Gallery</a>
+    <a href="blog.html">Blog</a>
     <a href="contact.html">Contact Me</a>
   </nav>
 
@@ -98,12 +102,14 @@
         <div class="article-item">
             <h4>A Comprehensive Model of Morphologically Realistic Cosmic Dust Particles</h4>
             <p>ApJ (2023)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
         <div class="article-item">
             <h4>REST: A Java Package for Crafting Realistic Cosmic Dust Particles</h4>
             <p>ApJS (2022)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
       </div>
       
@@ -112,12 +118,14 @@
         <div class="article-item">
             <h4>Optical observations and dust modelling of comet 156P/Russell-LINEAR</h4>
             <p>Icarus (2022)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
         <div class="article-item">
             <h4>Study of dust coma of comets 32P/Comas Sola and C/2015 V2 (Johnson) by imaging polarimetry</h4>
             <p>Ap&SS (2022)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
       </div>
 
@@ -126,20 +134,35 @@
         <div class="article-item">
             <h4>Exploring the Plasmonic Density of States To Direct Singlet or Triplet Excitonic Energy Transfer</h4>
             <p>The Journal of Physical Chemistry C (2025)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
         <div class="article-item">
             <h4>Optical Properties of One Dimensional Plasmonic Polymers</h4>
             <p>ChemPhysChem (2026)</p>
-            <footer><a href="publications.html">Read more</a></footer>
+            <footer><a href="publications.html">Read more</a>
+  </footer>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Dr. Prithish Halder</p>
+    <p>&copy; 2026 <a href="https://orcid.org/0000-0002-1073-1419" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #ccc; transition: color 0.3s;" onmouseover="this.style.color='#a6ce39'" onmouseout="this.style.color='inherit'">Prithish Halder</a></p>
+    <div style="margin-top: 15px; display: flex; justify-content: center; opacity: 0.8; transition: opacity 0.3s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.8">
+      <a href="https://hits.sh/prithishhalder.github.io/"><img id="visitor-badge-footer" alt="Visitors" src=""/></a>
+    </div>
+    <script>
+      if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+          document.getElementById("visitor-badge-footer").src = "https://hits.sh/localhost-dev.svg?style=for-the-badge&label=Local%20Visits&color=757575";
+      } else {
+          document.getElementById("visitor-badge-footer").src = "https://hits.sh/prithishhalder.github.io.svg?style=for-the-badge&label=Total%20Visitors&color=3F51B5";
+      }
+    </script>
+
+  
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="script.js?v=1787124764067"></script>
 </body>
 </html>

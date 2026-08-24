@@ -334,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
              const citations = cols[7] ? parseInt(cols[7].trim(), 10) || 0 : 0;
              const type = cols.length >= 9 ? cols[8].trim() : 'Article';
+             const doi = cols.length >= 10 ? cols[9].trim() : '';
              
              // Extract year
              let year = 0;
@@ -344,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
              publicationsData.push({
                  authors, isFirstAuthor, myPosition, totalAuthors, title, journal, details,
-                 iff, sjr, qStr, qVal, citations, year, type,
+                 iff, sjr, qStr, qVal, citations, year, type, doi,
                  originalIndex: i
              });
           }
@@ -436,6 +437,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += ` <span style="background:#009688; color:white; padding:2px 6px; border-radius:4px; font-size:11px; margin-left:6px; font-weight:bold; letter-spacing:0.5px; box-shadow:0 2px 4px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);">Article</span>`;
              }
              
+             if (pub.doi) {
+                html += ` <a href="https://doi.org/${pub.doi}" target="_blank" style="text-decoration:none;"><span style="background:#111; color:white; padding:2px 6px; border-radius:4px; font-size:11px; margin-left:4px; font-weight:bold; letter-spacing:0.5px; box-shadow:0 2px 4px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); cursor:pointer;">DOI</span></a>`;
+             }
+             
              if (shortJournal) {
                 html += ` <span style="background:#E91E63; color:white; padding:2px 6px; border-radius:4px; font-size:11px; margin-left:4px; font-weight:bold; letter-spacing:0.5px; box-shadow:0 2px 4px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);">${shortJournal}</span>`;
              }
@@ -525,5 +530,68 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           animateBg();
       }
+      
+      // --- Rangoli Parallax Animation ---
+      const rangoliPattern = document.getElementById('rangoli-pattern');
+      if (rangoliPattern) {
+          window.addEventListener('scroll', () => {
+              const scrollY = window.scrollY;
+              
+              // Move the entire pattern up and down as you scroll
+              rangoliPattern.setAttribute('y', scrollY * 0.3);
+              
+              // Animate the line drawing effect
+              const dashes = document.querySelectorAll('.rangoli-dash');
+              dashes.forEach(dash => {
+                  dash.style.strokeDasharray = "10 5";
+                  dash.style.strokeDashoffset = -scrollY * 0.15;
+              });
+          });
+      }
   }
+});
+
+// Fetch and display featured story on all pages
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('blog.md')
+      .then(response => response.text())
+      .then(text => {
+          const posts = text.split('---');
+          let featuredIndex = -1;
+          let featuredPost = null;
+          
+          for(let i=0; i<posts.length; i++) {
+              if (posts[i].includes('[FEATURED]')) {
+                  featuredIndex = i;
+                  featuredPost = posts[i].replace(/\*\*\[FEATURED\]\*\*/g, '').replace(/\[FEATURED\]/g, '');
+                  break;
+              }
+          }
+          
+          if (featuredIndex !== -1 && featuredPost) {
+              const banner = document.getElementById('featured-story-banner');
+              if (banner) {
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = marked.parse(featuredPost);
+                  
+                  const titleEl = tempDiv.querySelector('h1, h2, h3');
+                  const title = titleEl ? titleEl.innerText : 'Featured Story';
+                  const imgEl = tempDiv.querySelector('img');
+                  const imgSrc = imgEl ? imgEl.src : '';
+                  
+                  banner.innerHTML = `
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        ${imgSrc ? `<div class="featured-img-container" style="flex-shrink: 0;"><img src="${imgSrc}" style="width: 90px; height: 90px; object-fit: cover; border-radius: 4px;" alt="Featured Image"></div>` : ''}
+                        <div style="min-width: 0; width: 100%;">
+                            <span class="feature-story-label" style="font-size: 0.65rem; color: #e63946; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px;">Featured Story</span>
+                            <h3 style="margin: 0; font-size: 0.9rem; color: #fff; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="blog.html?post=${featuredIndex}" style="color: inherit; text-decoration: none;">${title}</a></h3>
+                            <a class="read-more-link" href="blog.html?post=${featuredIndex}" style="display: inline-block; margin-top: 5px; color: #fff; text-decoration: none; border-bottom: 1px solid #e63946; font-size: 0.75rem; padding-bottom: 1px;">Read full post →</a>
+                        </div>
+                    </div>
+                  `;
+                  banner.style.display = 'block';
+              }
+          }
+      })
+      .catch(console.error);
 });
