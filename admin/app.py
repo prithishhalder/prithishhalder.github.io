@@ -42,8 +42,41 @@ def verify_credentials(username, password):
     computed_hash = hashlib.sha256((password + salt).encode('utf-8')).hexdigest()
     return secrets.compare_digest(saved_hash, computed_hash)
 
+import subprocess
+
 def trigger_sync():
-    os.system(f"python3 {os.path.join(PROJECT_ROOT, 'database', 'manage_db.py')} sync")
+    subprocess.run(["python3", os.path.join(PROJECT_ROOT, 'database', 'manage_db.py'), "sync"], check=False)
+
+def deploy_to_github():
+    """Syncs the database, commits changes, and pushes directly to origin main to trigger GitHub Pages deploy."""
+    try:
+        # 1. Sync database to json/bib
+        trigger_sync()
+
+        # 2. Stage database files, json, and bib
+        files_to_add = [
+            "database/publications.db",
+            "database/publications.bib",
+            "website-docusaurus/src/data/publications.json",
+            "website-docusaurus/src/data/presentations.json",
+            "website-docusaurus/static/publications.bib",
+            "website-docusaurus/blog"
+        ]
+        subprocess.run(["git", "add"] + files_to_add, cwd=PROJECT_ROOT, check=True)
+
+        # 3. Check if there are changes to commit
+        status_proc = subprocess.run(["git", "status", "--porcelain"], cwd=PROJECT_ROOT, capture_output=True, text=True)
+        if status_proc.stdout.strip():
+            subprocess.run(["git", "commit", "-m", "Auto-update publications & database via Admin CMS"], cwd=PROJECT_ROOT, check=True)
+
+        # 4. Push to main
+        push_proc = subprocess.run(["git", "push", "origin", "main"], cwd=PROJECT_ROOT, capture_output=True, text=True)
+        if push_proc.returncode == 0:
+            return True, "Successfully synced and pushed to GitHub! The live site is building now."
+        else:
+            return False, f"Git push failed: {push_proc.stderr.strip()}"
+    except Exception as e:
+        return False, f"Deployment error: {str(e)}"
 
 HTML_LOGIN = """<!DOCTYPE html>
 <html lang="en">
@@ -261,6 +294,14 @@ HTML_DASHBOARD = """<!DOCTYPE html>
             <input type="text" name="doi" placeholder="e.g. 10.1051/0004-6361/202555905">
           </div>
         </div>
+
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:10px 14px; margin-bottom:1.25rem; display:flex; align-items:center; gap:10px;">
+          <input type="checkbox" name="auto_push_github" id="add-auto_push_github" value="1" checked style="width:18px; height:18px; margin:0; cursor:pointer;">
+          <label for="add-auto_push_github" style="margin:0; cursor:pointer; color:var(--accent); font-family:'Geist', sans-serif; font-size:0.85rem;">
+            🚀 <strong>Auto-Deploy:</strong> Push immediately to GitHub after saving (site updates live automatically).
+          </label>
+        </div>
+
         <button type="submit">💾 SAVE NEW PUBLICATION & SYNC</button>
       </form>
     </div>
@@ -385,14 +426,33 @@ HTML_DASHBOARD = """<!DOCTYPE html>
     <header>
       <div>
         <h1>Sync & GitHub Deployment</h1>
-        <div style="color:var(--muted); font-size:0.9rem; margin-top:4px;">Re-bundle static files or trigger an instant synchronization.</div>
+        <div style="color:var(--muted); font-size:0.9rem; margin-top:4px;">Publish database updates, metrics, and new blog posts to your live website with 1 click.</div>
       </div>
     </header>
-    <div class="card">
-      <h3 style="margin-top:0; color:var(--green); font-family:'Fira Code', monospace;">MANUAL DATABASE SYNC</h3>
-      <p style="color:var(--muted); font-size:0.9rem;">Runs `python3 database/manage_db.py sync` to regenerate `publications.json`, `presentations.json`, and `publications.bib`.</p>
+
+    {{DEPLOY_ALERT}}
+
+    <div class="card" style="border:1px solid var(--accent); background: linear-gradient(180deg, rgba(122,162,247,0.08) 0%, var(--card) 100%);">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+        <div>
+          <h3 style="margin:0; color:var(--accent); font-family:'Fira Code', monospace; font-size:1.15rem;">🚀 1-CLICK DEPLOY TO LIVE SITE</h3>
+          <p style="color:var(--muted); font-size:0.9rem; margin-top:0.4rem; margin-bottom:0;">
+            Syncs the SQLite database, generates JSON & BibTeX files, and pushes directly to GitHub. GitHub Pages will automatically deploy in ~45 seconds without touching any terminal.
+          </p>
+        </div>
+      </div>
+      <form method="POST" action="/api/deploy-github">
+        <button type="submit" style="background:var(--accent); color:#1a1b26; font-size:1rem; padding:0.9rem 1.8rem; font-weight:700; border-radius:4px; cursor:pointer;">
+          🚀 SYNC & DEPLOY TO GITHUB NOW
+        </button>
+      </form>
+    </div>
+
+    <div class="card" style="margin-top:1.5rem;">
+      <h3 style="margin-top:0; color:var(--green); font-family:'Fira Code', monospace;">LOCAL DATABASE SYNC ONLY</h3>
+      <p style="color:var(--muted); font-size:0.9rem;">Runs `python3 database/manage_db.py sync` locally to regenerate `publications.json`, `presentations.json`, and `publications.bib` without pushing to GitHub.</p>
       <form method="POST" action="/api/sync-now">
-        <button type="submit">⚡ SYNC DATABASE NOW</button>
+        <button type="submit">⚡ SYNC DATABASE LOCALLY</button>
       </form>
     </div>
   </div>
@@ -462,16 +522,24 @@ HTML_DASHBOARD = """<!DOCTYPE html>
         </div>
       </div>
 
-      <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:10px 14px; margin-top:0.5rem; display:flex; align-items:center; gap:10px;">
-        <input type="checkbox" name="update_all_journal" id="edit-update_all_journal" value="1" checked style="width:18px; height:18px; margin:0; cursor:pointer;">
-        <label for="edit-update_all_journal" style="margin:0; cursor:pointer; color:var(--text); font-family:'Geist', sans-serif; font-size:0.85rem;">
-          ⚡ <strong>Smart Journal Sync:</strong> Also update IF, SJR, and Quartile for <em>all other publications</em> in this same journal (<span id="edit-journal-name-preview" style="color:var(--cyan); font-family:'Fira Code', monospace;"></span>).
-        </label>
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:10px 14px; margin-top:0.5rem; display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input type="checkbox" name="update_all_journal" id="edit-update_all_journal" value="1" checked style="width:18px; height:18px; margin:0; cursor:pointer;">
+          <label for="edit-update_all_journal" style="margin:0; cursor:pointer; color:var(--text); font-family:'Geist', sans-serif; font-size:0.85rem;">
+            ⚡ <strong>Smart Journal Sync:</strong> Also update IF, SJR, and Quartile for <em>all other publications</em> in this same journal (<span id="edit-journal-name-preview" style="color:var(--cyan); font-family:'Fira Code', monospace;"></span>).
+          </label>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input type="checkbox" name="auto_push_github" id="edit-auto_push_github" value="1" checked style="width:18px; height:18px; margin:0; cursor:pointer;">
+          <label for="edit-auto_push_github" style="margin:0; cursor:pointer; color:var(--accent); font-family:'Geist', sans-serif; font-size:0.85rem;">
+            🚀 <strong>Auto-Deploy:</strong> Push immediately to GitHub after saving (site updates live automatically).
+          </label>
+        </div>
       </div>
 
       <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:1.5rem;">
         <button type="button" onclick="closeEditModal()" style="background:var(--surface); color:var(--text);">Cancel</button>
-        <button type="submit">💾 SAVE CHANGES & SYNC</button>
+        <button type="submit">💾 SAVE & SYNC</button>
       </div>
     </form>
   </div>
@@ -559,9 +627,20 @@ class AdminHandler(http.server.BaseHTTPRequestHandler):
 
             conn.close()
 
+            query = urllib.parse.parse_qs(url.query)
+            deploy_status = query.get('deploy_status', [''])[0]
+            deploy_msg = query.get('deploy_msg', [''])[0]
+
+            deploy_alert_html = ""
+            if deploy_status == 'success':
+                deploy_alert_html = f'<div style="background:rgba(158,206,106,0.15); border:1px solid var(--green); color:var(--green); border-radius:4px; padding:1rem 1.25rem; margin-bottom:1.5rem; font-family:\'Fira Code\', monospace; font-size:0.9rem;">✅ {deploy_msg or "Deployed to GitHub successfully! Site build started."}</div>'
+            elif deploy_status == 'error':
+                deploy_alert_html = f'<div style="background:rgba(247,118,142,0.15); border:1px solid var(--red); color:var(--red); border-radius:4px; padding:1rem 1.25rem; margin-bottom:1.5rem; font-family:\'Fira Code\', monospace; font-size:0.9rem;">❌ {deploy_msg or "Failed to deploy to GitHub."}</div>'
+
             html = HTML_DASHBOARD.replace('{{PUB_ROWS}}', pub_rows_html)
             html = html.replace('{{PRES_ROWS}}', pres_rows_html)
             html = html.replace('{{PUB_COUNT}}', str(len(pubs)))
+            html = html.replace('{{DEPLOY_ALERT}}', deploy_alert_html)
 
             self.send_response(200)
             self.send_header('Content-Type', 'text/html; charset=utf-8')
@@ -609,6 +688,7 @@ class AdminHandler(http.server.BaseHTTPRequestHandler):
             citations = int(params.get('citations', ['0'])[0].strip() or 0)
             details = params.get('details', [''])[0].strip()
             doi = params.get('doi', [''])[0].strip()
+            auto_push_github = params.get('auto_push_github', ['0'])[0].strip() == '1'
 
             first_author = authors.split(',')[0].replace('P. ', '').replace(' ', '')
             title_word = re.sub(r'[^a-zA-Z]', '', title.split()[0] if title.split() else 'Pub')
@@ -623,8 +703,14 @@ class AdminHandler(http.server.BaseHTTPRequestHandler):
             conn.commit()
             conn.close()
 
-            trigger_sync()
-            self.send_redirect('/admin#publications')
+            if auto_push_github:
+                success, msg = deploy_to_github()
+                status = 'success' if success else 'error'
+                encoded_msg = urllib.parse.quote(msg)
+                self.send_redirect(f'/admin?deploy_status={status}&deploy_msg={encoded_msg}#publications')
+            else:
+                trigger_sync()
+                self.send_redirect('/admin#publications')
             return
 
         if self.path == '/api/update-publication':
@@ -641,6 +727,7 @@ class AdminHandler(http.server.BaseHTTPRequestHandler):
             details = params.get('details', [''])[0].strip()
             doi = params.get('doi', [''])[0].strip()
             update_all_journal = params.get('update_all_journal', ['0'])[0].strip() == '1'
+            auto_push_github = params.get('auto_push_github', ['0'])[0].strip() == '1'
 
             conn = get_db()
             cur = conn.cursor()
@@ -663,8 +750,14 @@ class AdminHandler(http.server.BaseHTTPRequestHandler):
             conn.commit()
             conn.close()
 
-            trigger_sync()
-            self.send_redirect('/admin#publications')
+            if auto_push_github:
+                success, msg = deploy_to_github()
+                status = 'success' if success else 'error'
+                encoded_msg = urllib.parse.quote(msg)
+                self.send_redirect(f'/admin?deploy_status={status}&deploy_msg={encoded_msg}#publications')
+            else:
+                trigger_sync()
+                self.send_redirect('/admin#publications')
             return
 
         if self.path == '/api/add-presentation':
@@ -714,6 +807,13 @@ tags: {tags_formatted}
         if self.path == '/api/sync-now':
             trigger_sync()
             self.send_redirect('/admin#deploy')
+            return
+
+        if self.path == '/api/deploy-github':
+            success, msg = deploy_to_github()
+            status = 'success' if success else 'error'
+            encoded_msg = urllib.parse.quote(msg)
+            self.send_redirect(f'/admin?deploy_status={status}&deploy_msg={encoded_msg}#deploy')
             return
 
         self.send_error(404, "Not Found")
