@@ -1,0 +1,13 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node / Docusaurus build caches
+website-docusaurus/node_modules/
+website-docusaurus/.docusaurus/
+website-docusaurus/build/
