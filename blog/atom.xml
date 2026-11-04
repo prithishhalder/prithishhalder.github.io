@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://prithishhalder.github.io/blog</id>
+    <title>Dr. Prithish Halder Blog</title>
+    <updated>2026-08-25T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://prithishhalder.github.io/blog"/>
+    <subtitle>Dr. Prithish Halder Blog</subtitle>
+    <icon>https://prithishhalder.github.io/profile.jpg</icon>
+    <entry>
+        <title type="html"><![CDATA[Predicting Extreme Solar Flares: A New Magnetic Topology Framework]]></title>
+        <id>https://prithishhalder.github.io/blog/predicting-extreme-solar-flares</id>
+        <link href="https://prithishhalder.github.io/blog/predicting-extreme-solar-flares"/>
+        <updated>2026-08-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Predicting when and where an extreme solar flare will erupt is one of the most significant challenges in space weather forecasting. Existing methods often struggle, especially when dealing with rapidly reconfiguring active regions that produce recurring X-class flares.]]></summary>
+        <content type="html"><![CDATA[<p>Predicting when and where an extreme solar flare will erupt is one of the most significant challenges in space weather forecasting. Existing methods often struggle, especially when dealing with rapidly reconfiguring active regions that produce recurring X-class flares.</p>
+<p><em>Authors: Prithish Halder, Sudheer K. Mishra, Abhishek K. Srivastava, Ayumi Asai, Manik Sharma, Peter A. Dowben</em></p>
+<p><img decoding="async" loading="lazy" alt="Solar Flare Prediction" src="https://prithishhalder.github.io/assets/images/post2_im1-bdc36d4c93e4788d1eab3ae334718c8f.jpg" width="1024" height="1024" class="img_ev3q"></p>
+<p>In our recent work presented at the <strong>44th meeting of the Astronomical Society of India (ASI 2026)</strong>, we introduce a novel approach to tackle this problem head-on by looking beyond static complexity metrics and diving deep into the magnetic topology of active regions.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tracking-the-precursor-winding-flux-vs-helicity">Tracking the Precursor: Winding Flux vs. Helicity<a href="https://prithishhalder.github.io/blog/predicting-extreme-solar-flares#tracking-the-precursor-winding-flux-vs-helicity" class="hash-link" aria-label="Direct link to Tracking the Precursor: Winding Flux vs. Helicity" title="Direct link to Tracking the Precursor: Winding Flux vs. Helicity" translate="no">​</a></h3>
+<p>We performed an in-depth spatiotemporal analysis of two of the most flare-productive active regions of Solar Cycle 25 (NOAA AR 13664 and AR 13842). Using vector magnetograms from SDO/HMI and EUV data from SDO/AIA, we analyzed the evolution of magnetic helicity, winding flux, and polarity inversion line (PIL) features before and after flares.</p>
+<p>What we discovered was striking: while magnetic helicity flux remains broadly diffused, <strong>magnetic winding flux exhibits systematic, localized increases</strong> near emerging or pre-existing flux-rope structures during the flare precursor stage—sometimes minutes to hours before the eruption.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-winding-flux-based-masked-pil-framework">The Winding-Flux-Based Masked PIL Framework<a href="https://prithishhalder.github.io/blog/predicting-extreme-solar-flares#the-winding-flux-based-masked-pil-framework" class="hash-link" aria-label="Direct link to The Winding-Flux-Based Masked PIL Framework" title="Direct link to The Winding-Flux-Based Masked PIL Framework" translate="no">​</a></h3>
+<p>Building on this localized signal, we developed a new <strong>winding-flux-based masked PIL framework</strong>. This technique isolates stable and recurrent PIL structures that are directly linked to strong flaring activity.</p>
+<p>By tracking these masked PILs and analyzing the gradient of their most intense segments, we found that we can identify localized trigger regions <strong>3 to 7 hours before a flare ignites</strong>. Remarkably, this method reliably pinpoints flare trigger sites even amid the chaotic, rapid magnetic reconfigurations that follow multiple eruptions.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-this-means-for-space-weather">What This Means for Space Weather<a href="https://prithishhalder.github.io/blog/predicting-extreme-solar-flares#what-this-means-for-space-weather" class="hash-link" aria-label="Direct link to What This Means for Space Weather" title="Direct link to What This Means for Space Weather" translate="no">​</a></h3>
+<p>Our results demonstrate that magnetic winding and winding-based masked PIL metrics are robust, reliable early indicators for extreme solar flares. Because this approach succeeds in regimes where existing forecasting methods struggle (like recurring X-class flares), it offers a promising new pathway for operational space-weather forecasting.</p>
+<ul>
+<li class=""><a href="https://astron-soc.in/asi2026" target="_blank" rel="noopener noreferrer" class="">Presented at ASI 2026, IIT Guwahati, India</a></li>
+<li class=""><a href="https://ui.adsabs.harvard.edu/abs/2026asi..confO...6H" target="_blank" rel="noopener noreferrer" class="">View on NASA ADS</a></li>
+</ul>]]></content>
+        <author>
+            <name>Dr. Prithish Halder</name>
+            <uri>https://prithishhalder.github.io</uri>
+        </author>
+        <category label="solar-physics" term="solar-physics"/>
+        <category label="space-weather" term="space-weather"/>
+        <category label="magnetic-topology" term="magnetic-topology"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome to my new website]]></title>
+        <id>https://prithishhalder.github.io/blog/welcome-to-my-new-website</id>
+        <link href="https://prithishhalder.github.io/blog/welcome-to-my-new-website"/>
+        <updated>2026-08-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I'm excited to launch my new academic homepage! I will be using this blog to post behind-the-scenes thoughts on my latest publications, share updates from my role as Adjunct Faculty at the University of Nebraska-Lincoln, and write tutorials on light scattering simulations.]]></summary>
+        <content type="html"><![CDATA[<p>I'm excited to launch my new academic homepage! I will be using this blog to post behind-the-scenes thoughts on my latest publications, share updates from my role as Adjunct Faculty at the University of Nebraska-Lincoln, and write tutorials on light scattering simulations.</p>
+<p>Stay tuned for more updates, and feel free to reach out via the Contact page or connect on Google Scholar and ORCID!</p>]]></content>
+        <author>
+            <name>Dr. Prithish Halder</name>
+            <uri>https://prithishhalder.github.io</uri>
+        </author>
+        <category label="announcement" term="announcement"/>
+        <category label="personal" term="personal"/>
+    </entry>
+</feed>

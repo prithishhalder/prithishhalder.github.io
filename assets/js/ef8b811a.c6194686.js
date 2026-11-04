@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite_docusaurus||=[]).push([[947],{6600(i){i.exports=JSON.parse('{"authors":[{"name":"Dr. Prithish Halder","title":"Adjunct Faculty, University of Nebraska-Lincoln","url":"https://prithishhalder.github.io","imageURL":"/profile.jpg","key":"prithish","page":null,"count":2}]}')}}]);
